@@ -15,10 +15,10 @@ module.exports.getProfile = (req, res, next) => {
 };
 
 module.exports.updateProfile = (req, res, next) => {
-  const { name, about } = req.body;
+  const { name } = req.body;
   const profileId = req.user._id;
 
-  User.findByIdAndUpdate(profileId, { name, about }, { new: true, runValidators: true })
+  User.findByIdAndUpdate(profileId, { name }, { new: true, runValidators: true })
     .orFail(() => { next(new NotFoundError('Пользователь по указанному _id не найден.')); })
     .then((user) => res.send(user))
     .catch((err) => {
@@ -66,8 +66,8 @@ module.exports.signIn = (req, res, next) => {
 
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-        secure: true,
+        // httpOnly: true,
+        // secure: true,
       }).send({ message: 'Успешный вход в систему' });
     })
     .catch(next);

@@ -17,14 +17,15 @@ module.exports.createMovie = (req, res, next) => {
     year: req.body.year,
     description: req.body.description,
     image: req.body.image,
-    trailer: req.body.trailer,
+    trailerLink: req.body.trailerLink,
+    thumbnail: req.body.thumbnail,
+    owner: req.user._id,
+    movieId: req.body.movieId,
     nameRU: req.body.nameRU,
     nameEN: req.body.nameEN,
-    thumbnail: req.body.thumbnail,
-    movieId: req.body.movieId,
   };
 
-  Movie.create({ movieData, owner: req.user._id })
+  Movie.create(movieData)
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
