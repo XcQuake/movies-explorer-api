@@ -4,21 +4,16 @@ const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const cors = require('cors');
+const { limiter } = require('./middlewares/limiter');
 const { errorHandler } = require('./middlewares/errorHandler');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
-
-mongoose.connect('mongodb://localhost:27017/dipmoviesdb', {
+mongoose.connect('mongodb://localhost:27017/moviesdb', {
   useNewUrlParser: true,
 });
 
