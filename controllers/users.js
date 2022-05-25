@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const ConflictError = require('../../express-mesto/errors/ConflictError');
+const ConflictError = require('../errors/ConflictError');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 
@@ -66,8 +66,8 @@ module.exports.signIn = (req, res, next) => {
 
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
-        // httpOnly: true,
-        // secure: true,
+        httpOnly: true,
+        sameSite: true,
       }).send({ message: 'Успешный вход в систему' });
     })
     .catch(next);

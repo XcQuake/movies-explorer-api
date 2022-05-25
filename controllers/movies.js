@@ -1,4 +1,4 @@
-const ForbiddenError = require('../../express-mesto/errors/ForbiddenError');
+const ForbiddenError = require('../errors/ForbiddenError');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const Movie = require('../models/movie');

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const urlValidator = require('../../express-mesto/validators/urlValidator');
+const urlValidator = require('../validators/urlValidator');
 
 const movieSchema = new mongoose.Schema({
   country: {

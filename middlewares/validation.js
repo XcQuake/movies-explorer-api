@@ -1,5 +1,5 @@
 const { celebrate, Joi } = require('celebrate');
-const urlValidator = require('../../express-mesto/validators/urlValidator');
+const urlValidator = require('../validators/urlValidator');
 const emailValidator = require('../validators/emailValidator');
 
 const signupValidation = celebrate({
