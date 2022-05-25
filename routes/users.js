@@ -3,9 +3,9 @@ const {
   getProfile,
   updateProfile,
 } = require('../controllers/users');
-const { getProfileValidation, updateProfileValidation } = require('../middlewares/validation');
+const { updateProfileValidation } = require('../middlewares/validation');
 
-router.get('/me', getProfileValidation, getProfile);
+router.get('/me', getProfile);
 router.patch('/me', updateProfileValidation, updateProfile);
 
 module.exports = router;
