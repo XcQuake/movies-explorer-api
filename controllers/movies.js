@@ -43,7 +43,7 @@ module.exports.deleteMovie = (req, res, next) => {
     .orFail(() => { next(new NotFoundError('Фильм с указанным _id не найден.')); })
     .then((movie) => {
       if (movie.owner.equals(req.user._id)) {
-        Movie.findByIdAndRemove(movieId)
+        movie.remove()
           .then(() => res.send({ message: 'Фильм удалён' }))
           .catch(next);
       } else {
