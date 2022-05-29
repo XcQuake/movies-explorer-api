@@ -15,10 +15,10 @@ module.exports.getProfile = (req, res, next) => {
 };
 
 module.exports.updateProfile = (req, res, next) => {
-  const { name } = req.body;
+  const { name, email } = req.body;
   const profileId = req.user._id;
 
-  User.findByIdAndUpdate(profileId, { name }, { new: true, runValidators: true })
+  User.findByIdAndUpdate(profileId, { name, email }, { new: true, runValidators: true })
     .orFail(() => { next(new NotFoundError('Пользователь по указанному _id не найден.')); })
     .then((user) => res.send(user))
     .catch((err) => {

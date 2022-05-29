@@ -20,6 +20,7 @@ const signinValidation = celebrate({
 const updateProfileValidation = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
+    email: Joi.string().custom(emailValidator),
   }),
 });
 
