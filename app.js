@@ -11,9 +11,9 @@ const { errorHandler } = require('./middlewares/errorHandler');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { NODE_ENV, DB_ADDRESS, PORT = 3000 } = process.env;
 
-mongoose.connect('mongodb://localhost:27017/moviesdb', {
+mongoose.connect(NODE_ENV === 'production' ? DB_ADDRESS : 'mongodb://localhost:27017/moviesdb', {
   useNewUrlParser: true,
 });
 
