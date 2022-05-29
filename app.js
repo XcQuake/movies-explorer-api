@@ -19,6 +19,7 @@ mongoose.connect(NODE_ENV === 'production' ? DB_ADDRESS : 'mongodb://localhost:2
 
 const app = express();
 
+app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 app.use(cookieParser());
@@ -26,7 +27,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(requestLogger);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
