@@ -1,7 +1,7 @@
 {
   "name": "movies-explorer-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Api с данными пользователя и его сохраненных фильмов.",
   "main": "app.js",
   "scripts": {
     "lint": "npx eslint .",
