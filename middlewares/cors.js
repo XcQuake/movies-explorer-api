@@ -5,7 +5,6 @@ const allowedCors = [
 ];
 
 module.exports = (req, res, next) => {
-  console.log(req);
   const { method } = req;
   const { origin } = req.headers;
   const requestHeaders = req.headers['access-control-request-headers'];

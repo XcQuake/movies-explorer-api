@@ -15,6 +15,6 @@ router.post('/signout', signOut);
 router.use('/users', usersRouter);
 router.use('/movies', moviesRouter);
 
-router.use(() => { throw new NotFoundError('Ресурс по указанному адресу не найден'); });
+router.use(() => { throw new NotFoundError('Страница по указанному маршруту не найдена.'); });
 
 module.exports = router;

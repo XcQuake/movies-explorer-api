@@ -23,9 +23,9 @@ module.exports.updateProfile = (req, res, next) => {
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
+        next(new BadRequestError('При обновлении профиля произошла ошибка.'));
       } else if (err.code === 11000) {
-        next(new ConflictError('Пользователь с этой почтой уже зарегистрирован'));
+        next(new ConflictError('Пользователь с таким email уже существует.'));
       } else {
         next(err);
       }
@@ -46,9 +46,9 @@ module.exports.createProfile = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при создании пользователя.'));
+        next(new BadRequestError('При регистрации пользователя произошла ошибка.'));
       } else if (err.code === 11000) {
-        next(new ConflictError('Пользователь с этой почтой уже зарегистрирован'));
+        next(new ConflictError('Пользователь с таким email уже существует.'));
       } else {
         next(err);
       }
